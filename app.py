@@ -105,13 +105,13 @@ def render_dashboard(df):
     st.markdown("### Key Statistics")
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.markdown(f"<div class='metric-card'><h4>Total Records</h4><h2>{len(df)}</h2></div>", unsafe_allow_html=True)
+        st.metric(label="Total Records", value=f"{len(df):,}")
     with col2:
-        st.markdown(f"<div class='metric-card'><h4>Avg Demand (MWh)</h4><h2>{df['Electricity_Demand_MWh'].mean():.2f}</h2></div>", unsafe_allow_html=True)
+        st.metric(label="Avg Demand (MWh)", value=f"{df['Electricity_Demand_MWh'].mean():.2f}")
     with col3:
-        st.markdown(f"<div class='metric-card'><h4>Max Demand</h4><h2>{df['Electricity_Demand_MWh'].max():.2f}</h2></div>", unsafe_allow_html=True)
+        st.metric(label="Max Demand (MWh)", value=f"{df['Electricity_Demand_MWh'].max():.2f}")
     with col4:
-        st.markdown(f"<div class='metric-card'><h4>Min Demand</h4><h2>{df['Electricity_Demand_MWh'].min():.2f}</h2></div>", unsafe_allow_html=True)
+        st.metric(label="Min Demand (MWh)", value=f"{df['Electricity_Demand_MWh'].min():.2f}")
         
     st.markdown("### Dataset Summary")
     st.write(df.describe())
